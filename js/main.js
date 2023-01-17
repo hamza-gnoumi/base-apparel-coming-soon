@@ -1,40 +1,49 @@
-let btn = document.querySelector(".mail .btnSubmit");
+
 let mail = document.querySelector(".mail .zone-mail");
-btn.onclick = (e) => {
+let mailZone = document.querySelector(".mail");
+let imgError = document.querySelector(".input-control .imgError");
+
+
+
+mailZone.addEventListener('submit', e => {
     e.preventDefault();
     ValidateEmail(mail);
+});
+
+
+
+let setError = (element) => {
+    let inputcontrol = element.parentElement;
+    let errorDisplay = inputcontrol.querySelector(".error");
+    // Add Icon Error
+    imgError.style.display = "block"
+    //Add Msg Error
+    errorDisplay.innerText = "Please provide a valid email";
+    inputcontrol.classList.add('error');
+    inputcontrol.classList.remove('success');
+};
+let setSuccess = element => {
+    let inputcontrol = element.parentElement;
+    let errorDisplay = inputcontrol.querySelector(".error");
+    // remove Icon Error
+    imgError.style.display = "none"
+    //remove Msg Error
+    errorDisplay.innerText = "";
+    inputcontrol.classList.remove('error');
+    inputcontrol.classList.add('success');
 };
 
-let text = document.createTextNode("Please provide a valid email");
-let spanText = document.createElement("span");
-spanText.append(text);
-spanText.style = "font-size: 14px;color: var(--Soft-Red);position: absolute;bottom: -20px;left: 15px; display:none";
-let mailZone = document.querySelector(".mail");
-mailZone.appendChild(spanText);
-let imgError = document.createElement("img");
-imgError.src = "../images/icon-error.svg";
-imgError.style = "position: absolute;right: 80px;top: 12px; display:none;"
-mailZone.appendChild(imgError);
-
-
-
 function ValidateEmail(input) {
-
+    emailvalue = input.value.trim();
 
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    if (!input.value.match(validRegex)) {
-        mail.style.borderColor = "var(--Soft-Red)";
-        spanText.style.display = "block";
-        imgError.style.display = "block";
+    if (emailvalue === "" || !emailvalue.match(validRegex)) {
+        setError(input);
+    } else {
+        setSuccess(input);
     }
 
-}
-
-
-mail.onfocus = () => {
-    spanText.style.display = "none";
-    imgError.style.display = "none";
-    mail.style.borderColor = "var(--Desaturated-Red)";
 
 }
+
+

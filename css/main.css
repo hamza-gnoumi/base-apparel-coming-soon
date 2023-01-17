@@ -140,10 +140,41 @@ main h1 span {
 
 }
 
+.mail .zone-mail:focus {
+    border-color: var(--Desaturated-Red);
+    outline: 0;
+}
+
+.input-control.success .zone-mail {
+    border-color: #09c372;
+}
+
+.input-control.error .zone-mail {
+    border-color: var(--Soft-Red);
+}
+
+.input-control .imgError {
+    position: absolute;
+    right: 80px;
+    top: 12px;
+    display: none;
+}
+
+.input-control .error {
+    color: var(--Soft-Red);
+    font-size: 14px;
+    position: absolute;
+    bottom: -20px;
+    left: 15px;
+}
+
 .mail .btnSubmit {
-    background-image: var(--lineargard);
+    background-image: url(../images/icon-arrow.svg), var(--lineargard);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 53px;
     border-radius: 25px;
-    padding: 14px 35px;
+    padding: 14px 38px;
     border: none;
     position: absolute;
     right: -7px;
@@ -153,8 +184,8 @@ main h1 span {
 }
 
 .mail .btnSubmit:hover {
-    background-color: rgb(247, 205, 206);
-    background-image: none;
+    background-image: url(../images/icon-arrow.svg), linear-gradient(135deg, rgb(247, 205, 206), rgb(248, 200, 200));
+
 }
 
 
